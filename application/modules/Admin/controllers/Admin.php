@@ -3,7 +3,7 @@
 /**
 * 
 */
-class Admin extends MY_Controller
+class Admin extends Auth_Controller
 {
 	
 	function __construct()
@@ -15,6 +15,7 @@ class Admin extends MY_Controller
 	function index()
 	{
 		$data['content_view'] = 'Admin/dashboard1_v';
+		
 		$this->template->admin_template($data);
 	}
 

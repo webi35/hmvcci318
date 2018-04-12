@@ -3,21 +3,23 @@
 /**
 * 
 */
-class Books extends MY_Controller
+class Books extends Auth_Controller
 {
 	
 	function __construct()
 	{
 		parent::__construct();
-
 		$this->load->model('Books/M_Books');
 	}
 
 	function display_books()
 	{
+		
 		$data['page_header'] = 'All Books';
 		$data['description'] = 'Display All Books';
-		$data['content_view'] = 'Books/display_books_v';
+		//$data['content_view'] = 'Books/display_books_v';
+		$data['box_title'] = 'Books';
+		$data['content_view'] = 'inc_listview';
 		
 		$data['rows'] = $this->M_Books->get_all();
 
@@ -75,12 +77,6 @@ class Books extends MY_Controller
 				if (!$this->upload->do_upload('book_images'))
 				{
 					$error = array('error' => $this->upload->display_errors());
-
-					// echo '<pre>';
-					// var_dump($error);
-					// echo '</pre>';
-
-					// die();
 				}
 				else
 				{
@@ -90,7 +86,6 @@ class Books extends MY_Controller
 					];
 				}
 			}
-
 
 			$this->M_Books->add_book_images($image_array);
 			
