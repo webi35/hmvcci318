@@ -113,12 +113,17 @@ class Auth_Controller extends MX_Controller
 
 	function add()
 	{
+		$this->data['content_view'] = 'inc_data_v';
 		
+		$this->data['page_header'] = $this->ctl;
+		$this->data['description'] = 'Data ' . $this->ctl;
+
 		$this->data['buttons']['add'] 	= array('action' => $this->ctl . '/add', 'class' => 'success', 'value' => 'Tambah');
 
 		$this->data['buttons']['back'] 	= array('action' => $this->ctl, 'class' => 'default', 'value' => 'Kembali');
 
 		$this->data['description'] = 'Form ';
+
 		$this->template->admin_template($this->data);
 	}
 
