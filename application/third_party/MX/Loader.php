@@ -207,6 +207,9 @@ class MX_Loader extends CI_Loader
 		/* check module */
 		list($path, $_model) = Modules::find(strtolower($model), $this->_module, 'models/');
 
+		var_dump($model);
+
+		die();
 		if ($path == FALSE)
 		{
 			/* check application & packages */
