@@ -14,6 +14,9 @@ class Users extends Auth_Controller
 	function index()
 	{
 		
+		
+		var_dump(get_defined_vars());
+		
 		$this->a_kolom[] = array('label' => 'No', 'field' => 'no:');
 		$this->a_kolom[] = array('label' => 'Nama', 'field' => 'user_firstname');
 		$this->a_kolom[] = array('label' => 'Email', 'field' => 'user_email');
