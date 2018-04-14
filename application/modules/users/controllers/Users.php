@@ -13,15 +13,22 @@ class Users extends Auth_Controller
 
 	function index()
 	{
-		
+		var_dump(get_defined_vars());
+
 		$this->a_kolom[] = array('label' => 'No', 'field' => 'no:');
 		$this->a_kolom[] = array('label' => 'Nama', 'field' => 'user_firstname');
 		$this->a_kolom[] = array('label' => 'Email', 'field' => 'user_email');
 		$this->a_kolom[] = array('label' => 'No HP', 'field' => 'user_mobile');
 		$this->a_kolom[] = array('label' => 'Aktif', 'field' => 'user_active');
 
-		$a_data = array();
-		foreach ($this->a_data as $key => $row) 
+		parent::listdata();
+	}
+
+	//overide a_data
+	function a_data(){
+		$a_data = parent::a_data();
+
+		foreach ($a_data as $key => $row) 
 		{
 			foreach ($this->a_kolom as $k => $v) 
 			{
@@ -44,12 +51,8 @@ class Users extends Auth_Controller
 
 		}
 
-
-		$this->a_data = $a_data;
-
-		parent::listdata();
+		return $a_data;
 	}
-
 
 	function add()
 	{

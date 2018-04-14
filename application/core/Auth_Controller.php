@@ -12,9 +12,6 @@ class Auth_Controller extends MX_Controller
 	public $a_kolom = array();
 	public $data = array();
 
-	public $a_data = array();
-
-
 	function __construct()
 	{
 		parent::__construct();
@@ -44,8 +41,6 @@ class Auth_Controller extends MX_Controller
 
 		$tmpl = array ( 'table_open'  => '<table border="1" cellpadding="2" cellspacing="1" class="table table-bordered table-striped">' );
 		
-		$this->a_data = $this->M_users->getList();
-
 		$this->table->set_template($tmpl);
 	}
 
@@ -71,8 +66,9 @@ class Auth_Controller extends MX_Controller
 
 		$this->data['buttons']['add'] 	= array('action' => $this->ctl . '/add', 'class' => 'success', 'value' => 'Tambah');
 
+		$a_data = $this->a_data();
 		$no = 0;
-		foreach ($this->a_data as $key => $row) {
+		foreach ($a_data as $key => $row) {
 			$no++;
 
 			foreach ($this->a_kolom as $k => $v) {
@@ -109,6 +105,11 @@ class Auth_Controller extends MX_Controller
 		$this->data['table_generate'] = $this->table->generate();
 
 		$this->template->admin_template($this->data);
+	}
+
+	function a_data()
+	{
+		return $this->M_users->getList();
 	}
 
 	function add()
