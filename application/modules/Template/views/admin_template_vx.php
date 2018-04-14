@@ -216,8 +216,8 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li><a href="<?php echo base_url();?>udmin/books"><i class="fa fa-circle-o text-red"></i> <span>Books</span></a></li>
-        <li><a href="<?php echo base_url();?>users"><i class="fa fa-users"></i> <span>User</span></a></li>
+        <li><a href="<? echo base_url();?>Admin/books"><i class="fa fa-circle-o text-red"></i> <span>Books</span></a></li>
+        <li><a href="<? echo base_url();?>Users"><i class="fa fa-users"></i> <span>User</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
       </ul>
     </section>
@@ -249,11 +249,16 @@
                   <div class="box-header">
                     <h3 class="box-title"><?php echo isset($box_title) ? $box_title : '';?></h3>
 
+                    <?
+                    echo '<pre>';
+                    print_r($buttons);
+                    echo '</pre>';
+                    ?>
                     <?php
                     foreach ($buttons as $key => $attr) {
                       ?>
                         <a href="<?php echo base_url() . $attr['action'];?>" class="btn btn-<?php echo $attr['class']; ?> pull-right"><?php echo $attr['value']; ?></a>
-                      <?php
+                      <?
                     }
                     ?>
                   </div>

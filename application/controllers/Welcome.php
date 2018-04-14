@@ -48,7 +48,7 @@ class Welcome extends MY_Controller {
 
         }
 
-        $this->load->model('Users/M_Users');
+        $this->load->model('users/m_users');
 
         $data = $this->input->post();
         unset($data['passconf'],$data['submit']);

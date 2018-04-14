@@ -44,7 +44,7 @@ class Auth_Controller extends MX_Controller
 
 		$tmpl = array ( 'table_open'  => '<table border="1" cellpadding="2" cellspacing="1" class="table table-bordered table-striped">' );
 		
-		$this->a_data = $this->M_Users->getList();
+		$this->a_data = $this->M_users->getList();
 
 		$this->table->set_template($tmpl);
 	}

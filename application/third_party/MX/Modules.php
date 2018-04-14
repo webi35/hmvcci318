@@ -178,6 +178,7 @@ class Modules
 	**/
 	public static function find($file, $module, $base) 
 	{
+		
 		$segments = explode('/', $file);
 
 		$file = array_pop($segments);
@@ -191,6 +192,7 @@ class Modules
 			$modules[array_shift($segments)] = ltrim(implode('/', $segments).'/','/');
 		}	
 
+		
 		foreach (Modules::$locations as $location => $offset) 
 		{					
 			foreach($modules as $module => $subpath) 

@@ -11,6 +11,11 @@ class Template extends MY_Controller
 		# code...
 	}
 
+	function index()
+	{
+		echo 1;
+	}
+
 	function sample_template($data = null)
 	{
 		$this->load->view("Template/sample_template_v", $data);
