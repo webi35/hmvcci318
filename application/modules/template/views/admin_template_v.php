@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Blank Page</title>
+  <title>AdminLTE 2 | <?php echo $page; ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -34,7 +34,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo base_url();?>assets/index2.html" class="logo">
+    <a href="<?php echo base_url();?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
@@ -215,10 +215,9 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
-        <li><a href="<? echo base_url();?>Admin/books"><i class="fa fa-circle-o text-red"></i> <span>Books</span></a></li>
-        <li><a href="<? echo base_url();?>Users"><i class="fa fa-users"></i> <span>User</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+        <?php
+        $this->load->view($admin_sidebar_menu);
+        ?>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -234,11 +233,11 @@
         <?php echo $page_header; ?>
         <small><?php echo $description; ?></small>
       </h1>
-      <!-- <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
-      </ol> -->
+      <ol class="breadcrumb">
+        <li><a href="<?php echo base_url(); ?>"><i class="fa fa-dashboard"></i> Admin</a></li>
+        <li><a href="<?php echo base_url().$ctl; ?>"><?php echo ucfirst($ctl); ?></a></li>
+        <li class="active"><?php echo $description; ?></li>
+      </ol>
     </section>
 
     <!-- Main content -->
@@ -248,19 +247,17 @@
           <div class="box">
                   <div class="box-header">
                     <h3 class="box-title"><?php echo isset($box_title) ? $box_title : '';?></h3>
-
-                    <?
-                    echo '<pre>';
-                    print_r($buttons);
-                    echo '</pre>';
-                    ?>
+                    <ul class="inline">
                     <?php
                     foreach ($buttons as $key => $attr) {
                       ?>
-                        <a href="<?php echo base_url() . $attr['action'];?>" class="btn btn-<?php echo $attr['class']; ?> pull-right"><?php echo $attr['value']; ?></a>
-                      <?
+                        <li>
+                          <a href="<?php echo base_url() . $attr['action'];?>" class="btn btn-<?php echo $attr['class']; ?> pull-right"><?php echo $attr['value']; ?></a>
+                        </li>
+                      <?php
                     }
                     ?>
+                    </ul>
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">

@@ -1,16 +1,8 @@
 <?php
-class Auth_Controller extends MX_Controller
+class Auth_Controller extends MY_Controller
 {
-
-	
-	public $ctl;
-	public $method;
-
 	public $c_edit = true;
-
-
 	public $a_kolom = array();
-	public $data = array();
 
 	function __construct()
 	{
@@ -18,21 +10,12 @@ class Auth_Controller extends MX_Controller
 
 		$this->is_loged_in();
 
-		$this->load->module('Template');
+		$this->data['admin_sidebar_menu'] = 'admin_sidebar_menu';
 
-		$this->ctl = $this->uri->segment(1);
-		$this->method = $this->uri->segment(2);
-
-		$this->data['ctl'] = $this->ctl;
-
-		$this->data['page_header'] = $this->ctl;
+		$this->data['page_header'] = ucfirst($this->ctl);
 		$this->data['description'] = 'Halaman ' . $this->ctl;
 
 		$this->data['c_edit'] = $this->c_edit;
-
-		//load model
-		$model = $this->ctl.'/M_'.$this->ctl;
-		$this->load->model($model);
 
 		$this->data['buttons'] = array();
 
@@ -61,7 +44,6 @@ class Auth_Controller extends MX_Controller
 		
 		$this->data['content_view'] = 'inc_table_generate';
 		
-		$this->data['page_header'] = $this->ctl;
 		$this->data['description'] = 'Data ' . $this->ctl;
 
 		$this->data['buttons']['add'] 	= array('action' => $this->ctl . '/add', 'class' => 'success', 'value' => 'Tambah');
@@ -115,10 +97,6 @@ class Auth_Controller extends MX_Controller
 	function add()
 	{
 		$this->data['content_view'] = 'inc_data_v';
-		
-		$this->data['page_header'] = $this->ctl;
-		$this->data['description'] = 'Data ' . $this->ctl;
-
 		$this->data['buttons']['add'] 	= array('action' => $this->ctl . '/add', 'class' => 'success', 'value' => 'Tambah');
 
 		$this->data['buttons']['back'] 	= array('action' => $this->ctl, 'class' => 'default', 'value' => 'Kembali');

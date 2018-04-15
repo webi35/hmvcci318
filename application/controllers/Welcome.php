@@ -1,12 +1,32 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends MY_Controller {
+class Welcome extends Front_Controller {
+
+	
+	function __construct()
+	{
+		parent::__construct();
+
+	}
 
 	public function index()
 	{
-		$this->load->view('welcome_v');
+
+		$loged_in = $this->session->userdata('loged_in');
+
+		$user_id = $this->session->userdata('user_id');
+
+		if($loged_in && !empty($user_id))
+		{
+			return redirect('admin');
+		}
+		
+		$this->data['content_view'] = 'front/home';
+
+		$this->template->front_template($this->data);
 	}
+
 
 	public function signup()
 	{
@@ -122,7 +142,7 @@ class Welcome extends MY_Controller {
 
        	$this->session->set_userdata($session_user);
 
-       	return redirect('Admin');
+       	return redirect('admin');
         
 	}
 
