@@ -1,9 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-$config['clientId'] = '305745921100-891ehud4qu181ea1o06utlt6fbee0am9.apps.googleusercontent.com'; //add your client id
-$config['clientSecret'] = '_JOdH36-KkbW24GgKnroXv4O'; //add your client secret
-$config['redirectUri'] = 'http://localhost/hmvcci318/login_google'; //add your redirect uri
+$config['clientId'] = '283108941912-mm7t6fodrtrn2t39kmaa7n4vtglqo01g.apps.googleusercontent.com'; //add your client id
+$config['clientSecret'] = '63uxuENbn4ZaOEpi-kUVj6VB'; //add your client secret
+$config['redirectUri'] = 'http://localhost/hmvcci318/login/g_callback'; //add your redirect uri
 $config['apiKey'] = ''; //add your api key here
-$config['applicationName'] ='hmvcci318'; //application name for the api
-
+$config['applicationName'] ='hmvcci318 login with google'; //application name for the api
+$config['dscope'] = "https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email";
 ?>
