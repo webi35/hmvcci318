@@ -15,17 +15,15 @@ class Google extends MX_Controller{
 	{
 		$this->ci =& get_instance();
 
-        //include_once __DIR__ . '/../../vendor/autoload.php';
-
 		$config = $this->ci->load->config('google');
 
-		var_dump($config);
-		die();
+		$fcpath = FCPATH . 'google-api-php-client-2.2.1/vendor/autoload.php';
 
+        include_once $fcpath;
 
 		$this->ci->load->library('session');
 
-		$this->client = new Google_Client();
+		$this->client = new Google_Client(); 
         $this->client->setApplicationName($this->ci->config->item('applicationName'));
 
         $this->client->setClientId($this->ci->config->item('clientId'));
@@ -34,76 +32,40 @@ class Google extends MX_Controller{
         $this->client->setDeveloperKey($this->ci->config->item('apiKey'));
 
         $this->client->addScope('https://www.googleapis.com/auth/userinfo.email');
-        $this->client->setAccessType('offline');
 
-		if($this->ci->session->userdata('refreshToken')!=null)
-		{
-			$this->loggedIn = true;
-
-			if($this->client->isAccessTokenExpired())
-			{
-				$this->client->refreshToken($this->ci->session->userdata('refreshToken'));
-        		
-        		$accessToken = $this->client->getAccessToken();
-
-        		$this->client->setAccessToken($accessToken);
-			}
-		}
-		else
-		{
-			$accessToken = $this->client->getAccessToken();
-
-			if($accessToken!=null)
-			{
-				$this->client->revokeToken($accessToken);
-			}
-
-			$this->loggedIn = false;
-		}
+        $this->oauth2 = new Google_Service_Oauth2($this->client);
+       
 	}
 
-	public function isLoggedIn()
-	{
-		return $this->loggedIn;
-	}
+	public function loginURL() {
+        return $this->client->createAuthUrl();
+    }
+    
+    public function getAuthenticate() {
+    	$creds = $this->client->authenticate($_GET['code']);
 
-	public function getLoginUrl()
-	{
-		return $this->client->createAuthUrl();
-	}
+        return $creds;
+    }
+    
+    public function getAccessToken() {
+        return $this->client->getAccessToken();
+    }
+    
+    // public function setAccessToken() {
+    //     $token = $this->client->setAccessToken();
 
-	public function setAccessToken()
-	{
-		$this->client->authenticate($_GET['code']);
+    //     var_dump($token);
+    //     return $token;
+    // }
+    
+    public function revokeToken() {
+        return $this->client->revokeToken();
+    }
+    
+    public function getUserInfo() {
+        return $this->oauth2->userinfo->get();
+    }
 
-		$accessToken = $this->client->getAccessToken();
-
-		$this->client->setAccessToken($accessToken);
-
-		if(isset($accessToken['refresh_token']))
-		{
-			$this->ci->session->set_userdata('refreshToken', $accessToken['refresh_token']);
-		}
-	}
-
-	public function getUserInfo()
-	{
-		$service = new Google_Service_Oauth2($this->client);
-
-		return $service->userinfo->get();
-	}
-
-	public function logout()
-	{
-		$this->ci->session->unset_userdata('refreshToken');
-
-		$accessToken = $this->client->getAccessToken();
-
-		if($accessToken!=null)
-		{
-			$this->client->revokeToken($accessToken);
-		}
-	}
 }
 
 ?>

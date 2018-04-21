@@ -132,8 +132,9 @@ class Welcome extends Front_Controller {
        	$ip_address = $this->input->ip_address();
 
         $session_user['loged_in'] 		= TRUE;
-        $session_user['ip_address'] 	= $user->ip_address;
         $session_user['user_id'] 		= $user->user_id;
+        $session_user['ip_address'] 	= $user->ip_address;
+        
         $session_user['user_name'] 		= $user->user_name;
         $session_user['user_email'] 	= $user->user_email;
         $session_user['user_firstname'] = $user->user_firstname;

@@ -36,6 +36,15 @@
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
+    <?php
+    $err_msg = $this->session->flashdata('error');
+
+    if(isset($err_msg)){
+        echo '<div class="alert alert-danger">'.$err_msg.'</div>';
+    }
+
+    ?>
+
     <form action="../../index2.html" method="post">
       <div class="form-group has-feedback">
         <input type="email" class="form-control" placeholder="Email">
@@ -65,7 +74,7 @@
       <p>- OR -</p>
       <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
         Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+      <a href="<?php echo $loginwithgoogle;?>" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
         Google+</a>
     </div>
     <!-- /.social-auth-links -->
