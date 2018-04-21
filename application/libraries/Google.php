@@ -10,14 +10,18 @@
  * @link        https://github.com/angel-of-death/Codeigniter-Google-OAuth-Login
  */
 
-class Google {
+class Google extends MX_Controller{
 	public function __construct()
 	{
 		$this->ci =& get_instance();
 
-        include_once __DIR__ . '/../../vendor/autoload.php';
+        //include_once __DIR__ . '/../../vendor/autoload.php';
 
-		$this->ci->load->config('google');
+		$config = $this->ci->load->config('google');
+
+		var_dump($config);
+		die();
+
 
 		$this->ci->load->library('session');
 

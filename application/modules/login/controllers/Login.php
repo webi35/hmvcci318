@@ -25,7 +25,7 @@ class Login extends Front_Controller
 
 	}
 
-	function loginwithgoogle()
+	function g_callback()
 	{
 		
 	}
