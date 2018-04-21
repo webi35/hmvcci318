@@ -10,7 +10,7 @@
  * @link        https://github.com/angel-of-death/Codeigniter-Google-OAuth-Login
  */
 
-class Google extends MX_Controller{
+class Google {
 	public function __construct()
 	{
 		$this->ci =& get_instance();
