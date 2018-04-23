@@ -1,15 +1,22 @@
 # hmvcci318
 
+
 # Comming Soon Features
-  - list
+  - Admin menu
+    - users
+    - roles
+    - user role
+
+# Features
+  - login with google
+
+# Tasks
+  - list data
   - data
   - list tree
   - data tree
   - login with facebook
   - import from excel
   - ajax
-# Features
-  - login with google
-
 
 https://dillinger.io/
