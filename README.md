@@ -1,14 +1,13 @@
-# hmvcci318
+HMVC Codeigniter 3.1.8 
 
+# Features
+  - login with google
 
 # Comming Soon Features
   - Admin menu
     - users
     - roles
     - user role
-
-# Features
-  - login with google
 
 # Tasks
   - list data
