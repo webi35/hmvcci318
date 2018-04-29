@@ -1,11 +1,11 @@
 <?php
 
 /**
-* 
+*
 */
 class Users extends Auth_Controller
 {
-	
+
 	function __construct()
 	{
 		parent::__construct();
@@ -27,9 +27,9 @@ class Users extends Auth_Controller
 	function a_data(){
 		$a_data = parent::a_data();
 
-		foreach ($a_data as $key => $row) 
+		foreach ($a_data as $key => $row)
 		{
-			foreach ($this->a_kolom as $k => $v) 
+			foreach ($this->a_kolom as $k => $v)
 			{
 				$field = $v['field'];
 
@@ -43,8 +43,8 @@ class Users extends Auth_Controller
 				}
 				else{
 					$val  = $row[$field];
-				}				
-				
+				}
+
 				$a_data[$key][$field] = $val;
 			}
 
@@ -55,6 +55,12 @@ class Users extends Auth_Controller
 
 	function add()
 	{
+
+		$this->a_kolom[] = array('label' => 'Nama', 'field' => 'user_firstname');
+		$this->a_kolom[] = array('label' => 'Email', 'field' => 'user_email');
+		$this->a_kolom[] = array('label' => 'No HP', 'field' => 'user_mobile');
+		$this->a_kolom[] = array('label' => 'Aktif', 'field' => 'user_active');
+
 		parent::add();
 	}
 }
