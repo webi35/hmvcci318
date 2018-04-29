@@ -3,6 +3,7 @@ class MY_Controller extends MX_Controller
 {
 
 	public $ctl;
+	public $model;
 	public $method;
 	public $data = array();
 
@@ -11,7 +12,7 @@ class MY_Controller extends MX_Controller
 		parent::__construct();
 		$this->load->module('template');
 
-		$this->ctl = get_class($this);
+		$this->ctl = strtolower(get_class($this));
 		$this->method = $this->uri->segment(2);
 
 		$this->data['ctl'] = $this->ctl;
@@ -19,7 +20,7 @@ class MY_Controller extends MX_Controller
 		$this->data['page'] = $this->ctl;
 
 		//load model
-		$model = $this->ctl.'/M_'.$this->ctl;
-		$this->load->model($model);
+		$this->model = 'M_'.ucfirst($this->ctl);
+		$this->load->model(ucfirst($this->ctl).'/'.$this->model);
 	}
 }

@@ -493,7 +493,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_firstname`, `user_lastname`, `user_email`, `user_mobile`, `user_password`, `user_photo`, `user_active`) VALUES
-(1, 'landungpujisantoso@gmail.com', 'landung', 'santoso', 'landungpujisantoso@gmail.com', '087854444674', '$2y$10$t6qEXky0UIPRwVKFFU5U0epGXDD4WTlijnhwPTDcduE8nLUuwpJpO', '', 1),
 (3, 'landungpujisantoso2@gmail.com', 'landung2', '', 'landungpujisantoso2@gmail.com', '', '$2y$10$fOI2zUiQpA18hZoPC.u1Hu/GGzC/AxkhoEzPevISeJgljWmjcZNBC', NULL, 1);
 
 -- --------------------------------------------------------
