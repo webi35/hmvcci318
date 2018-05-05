@@ -24,4 +24,19 @@ class Admin extends Auth_Controller
 		$this->template->admin_template($data);
 	}
 
+	function git_pull()
+	{
+		// Print the exec output inside of a pre element
+		print("<pre>" . $this->execPrint("git pull https://github.com/landung/hmvcci318.git master") . "</pre>");
+	}
+
+	function execPrint($command) {
+		
+		$result = array();
+		exec($command, $result);
+		foreach ($result as $line) {
+			print($line . "\n");
+		}
+	}
+
 }
