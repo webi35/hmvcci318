@@ -256,8 +256,6 @@
                   <!-- /.box-header -->
                   <div class="box-body">
                       <?php  $this->load->view($content_view); ?>
-
-                      <?php die('aa'); ?>
                   </div>
 
           </div>
