@@ -23,6 +23,7 @@ class Template extends MY_Controller
 
 	function admin_template($data = null)
 	{
+		
 		$this->load->view("template/admin_template_v", $data);
 	}
 

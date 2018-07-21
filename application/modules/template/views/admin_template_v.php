@@ -249,24 +249,17 @@
                     <div class="row">
                       <div class="col-md-12">
                         <h3 class="box-title pull-left"><?php echo isset($box_title) ? $box_title : '';?></h3>
-                        <ul class="list-inline pull-right">
-                        <?php
-                        foreach ($buttons as $key => $attr) {
-                          ?>
-                            <li>
-                              <a href="<?php echo base_url() . $attr['action'];?>" class="btn btn-<?php echo $attr['class']; ?> pull-right"><i class="<?php echo $attr['icon']; ?>"></i> <?php echo $attr['value']; ?></a>
-                            </li>
-                          <?php
-                        }
-                        ?>
-                        </ul>
+                        
                       </div>
                     </div>
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
-                      <?php $this->load->view($content_view); ?>
+                      <?php  $this->load->view($content_view); ?>
+
+                      <?php die('aa'); ?>
                   </div>
+
           </div>
         </div>
       </div>

@@ -1,3 +1,20 @@
+<div class="row">
+	<div class="col-md-12">
+		<ul class="list-inline pull-right">
+		<?php
+		
+		  ?>
+		    <li>
+		    	<a class="btn btn-success" data-type="save"><i class="fa fa-save"></i> Simpan</a>
+		    </li>
+		  <?php
+		
+		?>
+		</ul>
+	</div>
+</div>
+
+
 <div class="col-md-12">
 	<div class="row">
 
@@ -12,7 +29,7 @@
 				<?php echo form_input(['name' => 'user_firstname', 'placeholder' => 'Nama']); ?>
 				<?php echo form_error('user_firstname'); ?>
 			</div>
-		</div>
+	</div>
 
     <div class="col-md-12">
 			<div class="form-group">
@@ -24,9 +41,10 @@
 </div>
 <script type="text/javascript">
 
-formid = 'form_data';
-$( "#other" ).click(function() {
-  $( "#"+formid ).submit();
-});
+$(document).ready(function () {
+	$("[data-type='save']").click(function () {
+	    alert('a');
+	});
+})
 
 </script>

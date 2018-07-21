@@ -45,13 +45,14 @@
 
     ?>
 
-    <form action="../../index2.html" method="post">
+    <?php echo form_open('login/ceklogin', array('class' => 'form-horizontal')); ?>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <?php echo form_input(['name' => 'user_name'], '', ['id' => 'inputEmail3', 'class' => 'form-control', 'placeholder' => 'Email']); ?>
+
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <?php echo form_password(['name' => 'user_password'],'',['class' => 'form-control', 'id' => 'inputPassword3', 'placeholder' => 'Password']); ?>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -68,7 +69,7 @@
         </div>
         <!-- /.col -->
       </div>
-    </form>
+    <?php echo form_close(); ?>
 
     <div class="social-auth-links text-center">
       <p>- OR -</p>
